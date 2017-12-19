@@ -2,11 +2,16 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: black;
 }
-
-header, main {
+/* old */
+/* header, main {
   width: 960px;
+} */
+/* new */
+header, main {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
 }
-
 /* HEADER */
 
 header nav ul li {
@@ -64,10 +69,31 @@ main .column h2 {
   color: white;
 }
 
+/* adds below to change columns from horizontal to vertical and min width so that When there is not enough space for the 320px(because thats iphone 3G size)element to fit, it will now flow underneath the element to it's left, starting from the right to the left.*/
+main .column {
+  float: left;
+  width: 33.33%;
+  min-width: 320px;
+}
+
 main .column:nth-child(1) h2 { background: rgb(126, 211, 33);}
 main .column:nth-child(2) h2 { background: rgb(235, 91, 76); }
 main .column:nth-child(3) h2 { background: rgb(0, 174, 255); }
 
 main .column p {
   padding: 15px;
+}
+
+/* styles for medium size page
+This will apply the styles inside the query only when the outer condition is true.
+Question: * Does this target the biggest size or the middle size?
+Medium */
+
+@media only screen and (max-width: 960px) {
+  main .column {
+    width: 50%;
+  }
+  main .column:last-child {
+    width: 100%;
+  }
 }
